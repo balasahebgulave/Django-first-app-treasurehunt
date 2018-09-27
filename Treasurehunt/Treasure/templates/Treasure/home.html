@@ -1,0 +1,63 @@
+{% load staticfiles %}
+<!DOCTYPE html>			
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="/static/css/style.css">
+	<link rel="stylesheet" type="text/css" href="/static/css/style.css">
+	<link rel="stylesheet" type="text/css" href="/static/css/bootstrap.min.css">
+
+	<style type="text/css">
+		nav{
+			padding: 10px;
+			background-color: orange;
+			
+		}
+		body{
+			background-image:url('{{ STATIC_URL }}');
+			background-repeat:no-repeat;
+			background-size:100%;
+			padding: 30px;
+	}
+	</style>
+
+
+</head>
+<body>
+
+
+
+
+<nav class="navbar navbar-dark bg-primary">
+	<div class="container">
+	<a href="http://localhost:8000/home"><button>Home Page</button></a>
+	{% if user.is_authenticated %}
+	{{user.username}}
+	
+	<a  href="http://localhost:8000/logout"><button>Logout</button></a>
+	{% else %}
+	<a  href="http://localhost:8000/login"><button>Login</button></a>
+
+	{% endif %}
+	<a href="http://localhost:8000/newtreasure"><button>New Treasure</button></a>
+     </div>
+</nav>
+
+  
+<div class='container'>
+	<ul>
+	<h2><b>Hello Welcome to Treasurehunt {{sumition}}!</b></h2><br>
+	
+	{% for treasure in all_treasure %}
+<li>
+	<a href="http://localhost:8000/edit/{{treasure.id}}"><h3>{{treasure.name}}</h3></a> <br><br>
+
+	<img src="{% if treasure.image %} {{treasure.image.url}} {% else %} blank {% endif %}"><br><br>
+</li>		
+
+	{% endfor %}
+	</ul>
+</div>
+
+</body>
+</html>

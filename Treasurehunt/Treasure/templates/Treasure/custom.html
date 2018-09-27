@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+
+	<link rel="stylesheet" type="text/css" href="/static/css/bootstrap.min.css">
+
+</head>
+
+<body>
+	<ul>
+		<div class='contaoner'>
+		<h2>Custom Form</h2>
+
+		<form method="post" action="" enctype="multipart/form-data">
+
+		{% csrf_token %}
+		{{form.as_p}}
+		
+		<button type='submit'>submit</button>
+
+		</form>
+		</div>
+	</ul>
+
+		
+
+</body>
+</html>
